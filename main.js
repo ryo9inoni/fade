@@ -7,10 +7,10 @@
 
 /*** example ***
  * const html = document.querySelector('html');
- * Fade('in', html, 300, 'ease-out');
+ * FADE('in', html, 300, 'ease-out');
 ***/
 
-const Fade = (type = '', element = null, duration = 0, easing = '') => {
+const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
   let flag = true;
   const result = type == 'in' ? 'block' : '0';
@@ -53,3 +53,5 @@ const Fade = (type = '', element = null, duration = 0, easing = '') => {
   tick();
 
 }
+
+export default FADE;
