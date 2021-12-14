@@ -33,14 +33,14 @@ const Fade = (type = '', element = null, duration = 0, easing = '') => {
 
     switch (type) {
       case 'in':
-        if (value == result) {
+        if (result == value) {
           element.style.transition = duration + 'ms ' + easing;
           element.style.opacity = '1';
           flag = false;
         }
         break;
       case 'out':
-        if (value == result) {
+        if (result == value) {
           element.style.display = 'none';
           flag = false;
         }
