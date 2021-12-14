@@ -15,14 +15,17 @@ const FADE = (type= '', element= null, duration= 0, easing= '') => {
   let flag = true;
   const valueFirst = type == 'in' ? 'block' : '0';
   const valueLast = type == 'in' ? '1' : 'none';
+  const transition = () => {
+    element.style.transitionDuration = duration+'ms';
+    element.style.transitionTimingFunction = easing;  
+  }
 
   switch (type) {
     case 'in':
       element.style.display = valueFirst;
       break;
     case 'out':
-      element.style.transitionDuration = duration+'ms';
-      element.style.transitionTimingFunction = easing;
+      transition();
       element.style.opacity = valueFirst;
       break;
   }
@@ -35,8 +38,7 @@ const FADE = (type= '', element= null, duration= 0, easing= '') => {
     switch (type) {
       case 'in':
         if (valueFirst == value) {
-          element.style.transitionDuration = duration+'ms';
-          element.style.transitionTimingFunction = easing;
+          transition();
           element.style.opacity = valueLast;
           flag = false;
         }
