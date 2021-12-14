@@ -12,13 +12,13 @@
 
 const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
-  let flag = true;
+  let watch = true;
   const valueFirst = type == 'in' ? 'block' : '0';
   const valueLast = type == 'in' ? '1' : 'none';
   const property = type == 'in' ? 'display' : 'opacity';
   const transition = () => {
     element.style.transitionDuration = duration+'ms';
-    element.style.transitionTimingFunction = easing;  
+    element.style.transitionTimingFunction = easing;
   }
 
   switch (type) {
@@ -42,17 +42,17 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
         if (valueFirst == value) {
           transition();
           element.style.opacity = valueLast;
-          flag = false;
+          watch = false;
         }
         break;
       case 'out':
         if (valueFirst == value) {
           element.style.display = valueLast;
-          flag = false;
+          watch = false;
         }
         break;
     }
-    if (flag) window.requestAnimationFrame(tick);
+    if (watch) window.requestAnimationFrame(tick);
 
   };
   tick();
