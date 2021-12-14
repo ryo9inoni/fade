@@ -3,12 +3,12 @@
  * @param {Element} element 要素[dom]
  * @param {Number}  duration 変化の時間 [css transition-duration: 0000ms]
  * @param {String}  easing 変化の速度 [css transition-timing-function: easing]
-***/
-
-/*** example ***
+ * 
+ * *** example ***
  * const html = document.querySelector('html');
  * FADE('in', html, 300, 'ease-out');
 ***/
+
 
 const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
