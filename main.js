@@ -10,11 +10,12 @@
  * FADE('in', html, 300, 'ease-out');
 ***/
 
-const FADE = (type= '', element= null, duration= 0, easing= '') => {
+const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
   let flag = true;
   const valueFirst = type == 'in' ? 'block' : '0';
   const valueLast = type == 'in' ? '1' : 'none';
+  const property = type == 'in' ? 'display' : 'opacity';
   const transition = () => {
     element.style.transitionDuration = duration+'ms';
     element.style.transitionTimingFunction = easing;  
@@ -30,11 +31,12 @@ const FADE = (type= '', element= null, duration= 0, easing= '') => {
       break;
   }
 
-  const tick = () => {
-    const property = type == 'in' ? 'display' : 'opacity';
+  //　スタイルの変化を監視
+  const tick = () => { 
+    
     const style = window.getComputedStyle(element);
     const value = style.getPropertyValue(property);
-
+    
     switch (type) {
       case 'in':
         if (valueFirst == value) {
@@ -50,9 +52,8 @@ const FADE = (type= '', element= null, duration= 0, easing= '') => {
         }
         break;
     }
-
     if (flag) window.requestAnimationFrame(tick);
-    
+
   };
   tick();
 
