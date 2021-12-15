@@ -23,9 +23,6 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
     element.style.transitionTimingFunction = easing;
   }
 
-  // style監視フラグ
-  let watch = true;
-
   // styleFirst
   switch (type) {
     case 'in':
@@ -50,20 +47,20 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
         if (valueFirst == value) {
           transition();
           element.style.opacity = valueLast;
-          watch = false;
         }
         break;
       case 'out':
         if (valueFirst == value) {
           element.style.display = valueLast;
-          watch = false;
         }
         break;
     }
 
-    // watchがtrueの間、styleを監視
-    if (watch) window.requestAnimationFrame(tick);
-
+    // valueFirstとvalueが同じ値になるまで間、styleを監視
+    if (valueFirst !== value) {
+      window.requestAnimationFrame(tick);
+    }
+    
   };
   tick();
 
