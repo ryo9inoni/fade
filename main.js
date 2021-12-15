@@ -12,15 +12,21 @@
 
 const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
-  let watch = true;
+  // propertyValue
   const valueFirst = type == 'in' ? 'block' : '0';
   const valueLast = type == 'in' ? '1' : 'none';
   const property = type == 'in' ? 'display' : 'opacity';
+  
+  // transitionStyle
   const transition = () => {
     element.style.transitionDuration = duration+'ms';
     element.style.transitionTimingFunction = easing;
   }
 
+  // 監視フラグ
+  let watch = true;
+
+  // styleFirst
   switch (type) {
     case 'in':
       element.style.display = valueFirst;
@@ -31,12 +37,14 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
       break;
   }
 
-  //　スタイルの変化を監視
+  //　styleを監視
   const tick = () => { 
     
+    // style, propertyValueを取得
     const style = window.getComputedStyle(element);
     const value = style.getPropertyValue(property);
     
+    // styleLast
     switch (type) {
       case 'in':
         if (valueFirst == value) {
