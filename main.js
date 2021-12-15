@@ -23,7 +23,7 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
     element.style.transitionTimingFunction = easing;
   }
 
-  // 監視フラグ
+  // style監視フラグ
   let watch = true;
 
   // styleFirst
@@ -60,6 +60,8 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
         }
         break;
     }
+
+    // watchがtrueの間、styleを監視
     if (watch) window.requestAnimationFrame(tick);
 
   };
