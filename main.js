@@ -9,9 +9,6 @@
  * FADE('in', html, 300, 'ease-out');
 ***/
 
-
-あいうえお
-
 const FADE = (type = '', element = null, duration = 0, easing = '') => {
   
   // propertyValue
@@ -69,5 +66,3 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
 }
 
 export default FADE;
-
-
