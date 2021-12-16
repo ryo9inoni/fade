@@ -69,3 +69,6 @@ const FADE = (type = '', element = null, duration = 0, easing = '') => {
 }
 
 export default FADE;
+
+
+よしずみ
